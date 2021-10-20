@@ -130,20 +130,20 @@ The following part of docker-compose.yml will create an instance of nginx that m
 ...
 ~~~
 
-## prepare.sh
-`prepare.sh` is a small script that creates `./init/initdb.sql` by downloading the docker image `guacamole/guacamole` and start it like this:
+## system-prepare.sh
+`system-prepare.sh` is a small script that creates `./init/initdb.sql` by downloading the docker image `guacamole/guacamole` and start it like this:
 
 ~~~bash
 docker run --rm guacamole/guacamole /opt/guacamole/bin/initdb.sh --postgres > ./init/initdb.sql
 ~~~
 
-It creates the necessary database initialization file for postgres.
+It creates the necessary database initialization file for postgres and it creates a default configuration of the guacamole-client application. 
 
-`prepare.sh` also creates the self-signed certificate `./nginx/ssl/self.cert` and the private key `./nginx/ssl/self-ssl.key` which are used
+`system-prepare.sh` also creates the self-signed certificate `./nginx/ssl/self.cert` and the private key `./nginx/ssl/self-ssl.key` which are used
 by nginx for https.
 
-## reset.sh
-To reset everything to the beginning, just run `./reset.sh`.
+## system-reset.sh
+To reset everything to the beginning, just run `./system-reset.sh`.
 
 ## WOL
 
